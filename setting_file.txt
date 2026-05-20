@@ -1,0 +1,13 @@
+   [ SERVER_CONFIG]
+// SOCK_STREAM = 1 | SOCK_DGRAM == 2
+service = 1
+protocol = 6 // IPPROTO_TCP = 6 | IPPROTO_UDP = 17
+port = 8080
+//backlog = 10
+[CLIENT_config]
+[CLIENT_config_2]
+// SOCK_STREAM = 1 | SOCK_DGRAM == 2
+service = 2
+protocol = 6 // IPPROTO_TCP = 6 | IPPROTO_UDP = 17
+port = 8000
+backlog = 10

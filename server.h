@@ -15,7 +15,7 @@ struct Server {
     struct sockaddr_in address;
     int socket;
     struct Sections *config_sections;
-    void (*launch)();
+    void (*launch)(struct Server *server);
 };
 
 // params domain, service, protocol, _interface, port, backlog, pointer of function *luanch

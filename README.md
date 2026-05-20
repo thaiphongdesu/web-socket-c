@@ -10,3 +10,6 @@
 
 - 🔀 **Return simple HTML response with conditional tag**  
   The server can generate responses that include conditional tags based on logic.
+
+## Issues:
+- 001: Fail to build due to an incompatible param.

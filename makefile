@@ -9,3 +9,9 @@ exe: utils.dll
 run: exe
 	./server.exe
 
+all: lib exe
+
+clean:
+	del *.exe
+	del *.o
+	del *.dll

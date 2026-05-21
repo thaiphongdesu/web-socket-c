@@ -1,6 +1,8 @@
+MV = $(if $(OS), cmd /c move,mv)
+
 all:
 	gcc -fPIC -c log.c -o log.o
 	gcc -shared -o log.dll log.o
-	cmd /c move *.dll ../../
-	cmd /c move *.o ../objs
+	$(MV) *.dll ../../
+	$(MV) *.o ../objs
 	cd ../..

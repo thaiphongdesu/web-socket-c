@@ -1,6 +1,7 @@
 OBJS_PATH = ../objs/
+MV = $(if $(OS), cmd /c move,mv)
 
 all:
 	gcc -fPIC -c server.c -lws2_32 -o server.o
-	cmd /c move *.o ../objs
+	$(MV) *.o ../objs
 	cd ../..

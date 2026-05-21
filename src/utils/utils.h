@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include "singly.h"
 
-#define file_name "setting_file.txt"
+#define file_name "../assets/setting_file.txt"
 #define READ "r"
 #define MAX_S 245
 

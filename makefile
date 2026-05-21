@@ -17,7 +17,7 @@ exe:
 run: exe
 	./server.exe
 
-all: util server exe
+all: log util server exe
 
 clean:
 	del *.exe

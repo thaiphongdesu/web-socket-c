@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "utils.h"
+#include "../utils/utils.h"
 
 #define SERVER_CONFIG "SERVER_CONFIG"
 
@@ -31,11 +31,15 @@ struct Server server_constructor(int domain, /*int service, int protocol,*/ u_lo
     /* service SOCK_STREAM ==  TCP | SOCK_DGRAM == UDP
        protocol IPPROTO_TCP = 6 or IPPROTO_UDP = 17, 0 is
        shorthand for use the usual one                 */
-    server.socket = socket(server.domain, server.service, server.protocol);   
+    server.socket = socket(server.domain, server.service, server.protocol);
     if(server.socket == 0) {
         printf("Failed to connect socket. Error: %d\n", WSAGetLastError());
         exit(1);
-    }    
+    }
+    if(server.socket == INVALID_SOCKET) {
+        printf("socket() fails. Err: %d", WSAGetLastError());
+        exit(1);
+    }
 
     if((bind(server.socket, (struct sockaddr*)&server.address, sizeof(server.address))) < 0) {
         printf("Failed to bind socket. Error: %d\n", WSAGetLastError());

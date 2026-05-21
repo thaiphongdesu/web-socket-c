@@ -1,7 +1,9 @@
-#include "server.h"
+#include "./src/server/server.h"
 #include <stdio.h>
-#include "utils.h"
+#include "./src/utils/utils.h"
 #include <stdbool.h>
+
+#include "./src/log/log.h"
 
 void launch(struct Server *server);
 struct Sections *test_parse_sections();
@@ -9,8 +11,9 @@ void debug_in_ascii(char *buffer);
 void test_find_section_name(const char *section_name, struct Sections *sections);
 
 int main() {
-    struct Server server = server_constructor(AF_INET, INADDR_ANY, launch);
-    server.launch(&server);
+    log_message(__func__, "hello from test.c file: %s %d", "test string from me", 2);
+    // struct Server server = server_constructor(AF_INET, INADDR_ANY, launch);
+    // server.launch(&server);
     // char section_name[256] = "SERVER_CONFIG";
     // struct Section *section = read_section(section_name);
     // if(section) {
@@ -18,8 +21,8 @@ int main() {
     // } else if(section == NULL) printf("Section SERVER_CONFIG is not found\n");
     // struct Sections *sections = test_parse_sections();
     // test_find_section_name("Server_config", sections);
-    de_allocate_list(server.config_sections->list);
-    free(server.config_sections);
+    // de_allocate_list(server.config_sections->list);
+    // free(server.config_sections);
     return 0;
 }
 

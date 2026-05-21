@@ -1,17 +1,26 @@
-lib:
-	gcc -fPIC -c singly.c -o singly.o
-	gcc -fPIC -c utils.c -o utils.o
-	gcc -shared -o utils.dll singly.o utils.o
+OBJS_PATH = src\objs
+OBJS = /src/objs/*.o
+DYN_PATH = .
+
+log:
+	cd src/log && make all
 	
-exe: utils.dll
-	gcc singly.c utils.c server.c test.c -L. -lutils -lws2_32 -o server
+util:
+	cd src/utils && make all
+
+server:
+	cd src/server && make all
+	
+exe:
+	gcc $(OBJS_PATH)\singly.o $(OBJS_PATH)\utils.o $(OBJS_PATH)\server.o test.c -L$(DYN_PATH) -lutils -L$(DYN_PATH) -llog -lws2_32 -o server
 
 run: exe
 	./server.exe
 
-all: lib exe
+all: log util server exe
 
 clean:
 	del *.exe
-	del *.o
+	del src\objs\*.o
 	del *.dll
+
